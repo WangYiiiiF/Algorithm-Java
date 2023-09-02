@@ -1,5 +1,7 @@
 package Sort;
 
+import static Util.Print.ArrayPrint;
+
 public class MergeSort {
     public static void main(String[] args)
     {
@@ -8,9 +10,7 @@ public class MergeSort {
 
         SortProcess(arr,0,arr.length-1);
 
-        for(i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
+        ArrayPrint(arr,0,arr.length);
     }
 
     public static void SortProcess(int[] arr, int l, int r)
