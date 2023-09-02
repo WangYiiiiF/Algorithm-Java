@@ -6,7 +6,6 @@ public class MergeSort {
     public static void main(String[] args)
     {
         int[] arr = {0,2,4,5,1,3};
-        int i;
 
         SortProcess(arr,0,arr.length-1);
 
