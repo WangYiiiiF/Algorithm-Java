@@ -8,10 +8,12 @@ public class HeapSort {
     public static void main(String[] args) {
         int[] arr = {3,2,2,4,7,1,6,4,1};
 
-        SortProcess(arr, 0, arr.length-1);
+        //SortProcess(arr, 0, arr.length-1);
+        SortProcess(arr);
         ArrayPrint(arr,0,arr.length);
     }
 
+/*
     public static void SortProcess(int[] arr, int l, int r){
         if(r>l){
             int[] help = new int[r-l+1];
@@ -33,6 +35,26 @@ public class HeapSort {
             for(i=l; i< r+1; i++){
                 arr[i] = help[i];
             }
+        }
+
+    }
+*/
+
+    public static void SortProcess(int[] arr){
+
+        int heapSize = arr.length;
+        int i;
+
+        if(arr == null || arr.length < 2){
+            return;
+        }
+        for (i = 0; i < arr.length; i++){
+            heapInsert(arr,i);
+        }
+        swap(arr,0,--heapSize);
+        while(heapSize > 0){
+            heapify(arr, 0, heapSize);
+            swap(arr,0, --heapSize);
         }
 
     }
