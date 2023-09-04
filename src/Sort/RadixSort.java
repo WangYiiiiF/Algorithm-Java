@@ -13,7 +13,8 @@ public class RadixSort {
 
     public static int maxbits(int[] arr){
         int max = Integer.MIN_VALUE;
-        for(int i = 0; i < arr.length; i++){
+        int i;
+        for(i = 0; i < arr.length; i++){
             max = Math.max(max, arr[i]);
         }
         int res = 0;
@@ -30,7 +31,7 @@ public class RadixSort {
 
     public static void SortProcess(int[] arr, int l, int r, int digit){   //digit代表最大数的位数
         final int radix = 10;
-        int i = 0, j = 0;
+        int i, j;
 
         int[] bucket = new int[r-l+1];
         for(int d = 1; d <= digit; d++){
