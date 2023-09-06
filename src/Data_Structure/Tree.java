@@ -34,6 +34,10 @@ public class Tree {
         System.out.println("Postorder traversal:");
         tree.postorder();
         System.out.print('\n');
+        // 宽度优先遍历并打印树的节点
+        System.out.println("Width first traversal:");
+        tree.WidthFirstTraversal();
+        System.out.print('\n');
         // 打印最大宽度
         System.out.print("Max Width: ");
         System.out.println(tree.MaxWidth());
@@ -53,7 +57,7 @@ class TreeNode {
     }
 }
 
-//二叉树
+//搜索二叉树
 class BinaryTree {
     TreeNode root;
 
@@ -94,7 +98,7 @@ class BinaryTree {
         }
     }
 
-    // 前序遍历（Preorder Traversal）
+    // 前序遍历（Preorder Traversal）深度优先遍历
     public void preorder() {
         preorderRec(root);
     }
@@ -120,7 +124,26 @@ class BinaryTree {
         }
     }
 
-    //求二叉树最大宽度
+    //宽度优先遍历
+    public void WidthFirstTraversal(){
+        if(root == null){
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            TreeNode cur = queue.poll();
+            System.out.print(cur.data + " ");
+            if(cur.left != null){
+                queue.add(cur.left);
+            }
+            if(cur.right != null){
+                queue.add(cur.right);
+            }
+        }
+    }
+
+    // 求二叉树最大宽度
     public int MaxWidth(){
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
