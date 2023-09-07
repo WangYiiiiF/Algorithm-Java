@@ -30,7 +30,6 @@ public class Heap {
         }
     }
 
-
     //将index位置的数向上移动
     public static void heapInsert(int[] arr, int index){
         while(arr[index] > arr[(index-1)/2]){
