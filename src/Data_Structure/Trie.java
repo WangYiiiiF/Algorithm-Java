@@ -21,6 +21,7 @@ public class Trie {
             root = new TrieNode();
         }
 
+        //加入word
         public void insert(String word){
             if(word == null){
                 return;
@@ -28,8 +29,8 @@ public class Trie {
             char[] chs = word.toCharArray();
             TrieNode node = root;
             node.pass++;
-            int index = 0;
-            for(int i = 0; i < chs.length; i++){
+            int index, i;
+            for(i = 0; i < chs.length; i++){
                 index = chs[i] - 'a';
                 if(node.nexts[index] == null){
                     node.nexts[index] = new TrieNode();
@@ -38,6 +39,44 @@ public class Trie {
                 node.pass++;
             }
             node.end++;
+        }
+
+        //删除word
+        public void delete(String word){
+            if(search(word) != 0){
+                char[] chs = word.toCharArray();
+                TrieNode node = root;
+                node.pass--;
+                int index, i;
+                for(i = 0; i < chs.length; i++){
+                    index = chs[i] -'a';
+                    if(--node.nexts[index].pass == 0){
+                        node.nexts[index] = null;
+                        return;
+                    }
+                    node = node.nexts[index];
+                }
+                node.end--;
+
+            }
+        }
+
+        //查询word加入过几次
+        public int search(String word){
+            if(word == null){
+                return 0;
+            }
+            char[] chs = word.toCharArray();
+            TrieNode node = root;
+            int index, i;
+            for(i = 0; i < chs.length; i++){
+                index = chs[i] - 'a';
+                if(node.nexts[index] == null){
+                    return 0;
+                }
+                node = node.nexts[index];
+            }
+            return node.end;
         }
     }
 }
